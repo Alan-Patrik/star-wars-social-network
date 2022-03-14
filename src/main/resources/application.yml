@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    active: test
+springdoc:
+  swagger-ui:
+    path: /docs
+  api-docs:
+    enabled: true
