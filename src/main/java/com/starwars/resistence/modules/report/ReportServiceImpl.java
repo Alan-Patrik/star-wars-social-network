@@ -74,7 +74,7 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public ReportDTO<ReportRebelDTO> calculatePercentage(String status) throws CustomBadRequestException {
+    public ReportDTO calculatePercentage(String status) throws CustomBadRequestException {
         switch (status) {
             case "rebels":
                 return calculatePercentageRebels();
@@ -85,42 +85,29 @@ public class ReportServiceImpl implements ReportService {
         }
     }
 
-    private ReportDTO<ReportRebelDTO> calculatePercentageTraitors() {
+    private ReportDTO calculatePercentageTraitors() {
         double traitors = reportRepository.amountTraitors();
         double allRebels = rebelRepository.count();
 
         double total = (traitors / allRebels) * 100;
-        List<ReportRebelDTO> allTraitors = rebelRepository
-                .findByTraitorTrue()
-                .stream()
-                .map(reportMapper::toReportDTO)
-                .collect(Collectors.toList());
 
         return new ReportDTO(
                 "Relatorio de traidores",
                 Instant.now(),
-                String.format("%.0f%%", total),
-                allTraitors
+                String.format("%.0f%%", total)
         );
     }
 
-    private ReportDTO<ReportRebelDTO> calculatePercentageRebels() {
+    private ReportDTO calculatePercentageRebels() {
         double rebels = reportRepository.amountRebels();
         double allRebels = rebelRepository.count();
 
         double total = (rebels / allRebels) * 100;
 
-        List<ReportRebelDTO> allTraitors = rebelRepository
-                .findByTraitorFalse()
-                .stream()
-                .map(reportMapper::toReportDTO)
-                .collect(Collectors.toList());
-
         return new ReportDTO(
                 "Relatorio de rebeldes",
                 Instant.now(),
-                String.format("%.0f%%", total),
-                allTraitors
+                String.format("%.0f%%", total)
         );
     }
 

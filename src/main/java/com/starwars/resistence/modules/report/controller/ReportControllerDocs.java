@@ -23,7 +23,7 @@ public interface ReportControllerDocs {
     ) throws CustomNotFoundException, CustomBadRequestException;
 
     @Operation(summary = "Operaçao para exibir relatorio com a porcentagem de rebeldes/traidores")
-    ResponseEntity<HttpResponseDTO<ReportDTO<ReportRebelDTO>>> reportPercentage(
+    ResponseEntity<HttpResponseDTO<ReportDTO>> reportPercentage(
             @Parameter(description = "Nome do grupo que deseja exibir relatorio", example = "rebels")
             @RequestParam String status
     ) throws CustomBadRequestException;

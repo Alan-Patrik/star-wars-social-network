@@ -33,10 +33,10 @@ public class ReportController implements ReportControllerDocs{
     }
 
     @GetMapping("/percentage")
-    public ResponseEntity<HttpResponseDTO<ReportDTO<ReportRebelDTO>>> reportPercentage(
+    public ResponseEntity<HttpResponseDTO<ReportDTO>> reportPercentage(
             @RequestParam String status
     ) throws CustomBadRequestException {
-        ReportDTO<ReportRebelDTO> response = service.calculatePercentage(status);
+        ReportDTO response = service.calculatePercentage(status);
 
         return ResponseEntity
                 .status(HttpStatus.OK)
