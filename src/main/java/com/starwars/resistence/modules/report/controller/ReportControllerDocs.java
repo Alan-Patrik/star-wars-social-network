@@ -16,9 +16,9 @@ public interface ReportControllerDocs {
 
     @Operation(summary = "Operaçao de reportar um rebelde")
     ResponseEntity<HttpResponseDTO<ReportResponseDTO>> report(
-            @Parameter(name = "Rebelde reportado", description = "Id do rebelde que vai ser reportado")
+            @Parameter(description = "Id do rebelde que vai ser reportado")
             @RequestParam Long rebelReportedId,
-            @Parameter(name = "Rebelde acusador", description = "Id do rebelde que vai acusar")
+            @Parameter(description = "Id do rebelde que vai acusar")
             @RequestParam Long rebelAccuserId
     ) throws CustomNotFoundException, CustomBadRequestException;
 
