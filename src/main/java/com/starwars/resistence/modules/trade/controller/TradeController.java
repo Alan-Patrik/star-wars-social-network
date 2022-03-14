@@ -22,7 +22,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/trading")
-public class TradeController {
+public class TradeController implements TradeControllerDocs{
     private final TradeServiceImpl service;
 
     @PostMapping

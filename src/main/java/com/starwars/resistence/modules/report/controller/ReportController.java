@@ -17,7 +17,7 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RestController
 @RequestMapping("/report")
 @RequiredArgsConstructor
-public class ReportController {
+public class ReportController implements ReportControllerDocs{
     private final ReportServiceImpl service;
 
     @PostMapping
